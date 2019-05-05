@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
 module.exports = {
     mode: 'none',
     entry: './src',
@@ -13,12 +15,26 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\.ts$/, loader: "ts-loader"}
+            {test: /\.ts$/, loader: "ts-loader"},
+            {test: /\.css$/, use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]},
+            {
+                test: /\.(png|jpe?g|gif)$/,
+                use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                    name: './images/[name].[ext]',
+                    },
+                }],
+            },
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: "./src/index.html"
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery'
         })
     ]
 }
