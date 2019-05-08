@@ -1,0 +1,15 @@
+<h1>{{title}}</h1>
+<div class="element" *ngIf="countries$ | async | selectedType:selectedType as country">
+    <app-main-widget (typeEmitter)="selectedType = $event" [country]="country"></app-main-widget>
+    <div class="element-right">
+      <app-temperatur-widget [weather]="country.weather"></app-temperatur-widget>
+      <app-followers-widget [social]="country.social"></app-followers-widget>
+    </div>
+    <div class="clear"> </div>
+</div>
+<ng-template #loader>
+  <h2>Идет загрузка...</h2>
+</ng-template>
+<div class="copy-right">
+      <p>© 2015 Hot Weather Widget. All rights reserved | Design by  <a href="http://w3layouts.com/" target="_blank">  W3layouts </a></p>
+</div>

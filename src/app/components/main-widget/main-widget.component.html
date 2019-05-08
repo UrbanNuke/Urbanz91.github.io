@@ -1,0 +1,35 @@
+<div class="element-left">
+  <div class="element-bg-img"><img src="../../../{{country.main.img}}" alt="" class="img-responsive"> </div>
+  <div class="element-left-bottom">
+    <div class="ele-strip">
+      <ul >
+        <li *ngFor="let type of allTypes">
+          <a href="#" (click)="changeType(type)">{{type}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="village" >
+      <h3>{{country.type.countryName}}</h3>
+      <span class="line"> </span>
+      <div class="activity_box">
+        <div class="scrollbar" id="style-2">
+          <div class="activity-row">
+            <div class="activity-desc">
+              <p>{{country.main.description}}</p>
+              <h5>Президент</h5>
+              <p>{{country.main.president}}</p>
+              <h5>Столица</h5>
+              <p>{{country.main.capital}}</p>
+              <h5>Население</h5>
+              <p>{{country.main.population}} человек</p>
+              <h5>Основые религии</h5>
+              <div *ngFor="let religion of country.main.religion">
+                <p>{{religion}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
